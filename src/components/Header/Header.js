@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, QUERIES, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import Icon from "../Icon";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -31,6 +32,18 @@ const Header = () => {
         </Nav>
         <Side />
       </MainHeader>
+      <MobileHeader>
+        <Side>
+          <Logo />
+        </Side>
+        <Icon id="shopping-bag" strokeWidth={2} />
+        <Icon id="search" strokeWidth={2} />
+        <Icon
+          id="menu"
+          strokeWidth={2}
+          onClick={() => setShowMobileMenu(true)}
+        />
+      </MobileHeader>
 
       <MobileMenu
         isOpen={showMobileMenu}
@@ -46,6 +59,19 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const MobileHeader = styled(MainHeader)`
+  display: none;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: flex;
+    gap: clamp(1.5rem, 2vw + 1rem, 3.2rem);
+    border-top: 4px solid ${COLORS.gray[900]};
+  }
 `;
 
 const Nav = styled.nav`
