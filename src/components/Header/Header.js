@@ -59,7 +59,7 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
-  @media ${QUERIES.tabletAndDown} {
+  @media ${QUERIES.tabletAndSmaller} {
     display: none;
   }
 `;
@@ -67,7 +67,7 @@ const MainHeader = styled.div`
 const MobileHeader = styled(MainHeader)`
   display: none;
 
-  @media ${QUERIES.tabletAndDown} {
+  @media ${QUERIES.tabletAndSmaller} {
     display: flex;
     gap: clamp(1.5rem, 2vw + 1rem, 3.2rem);
     border-top: 4px solid ${COLORS.gray[900]};

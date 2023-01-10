@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   align-items: baseline;
   gap: 32px;
 
-  @media ${QUERIES.phone} {
+  @media ${QUERIES.phoneAndSmaller} {
     flex-direction: column-reverse;
     gap: 0px;
     ${Spacer} {
@@ -59,7 +59,7 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
-  @media ${QUERIES.phone} {
+  @media ${QUERIES.phoneAndSmaller} {
     flex-basis: 0px;
   }
 `;
@@ -80,7 +80,7 @@ const Title = styled.h2`
 `;
 
 const SelectWrapper = styled.div`
-  @media ${QUERIES.phone} {
+  @media ${QUERIES.phoneAndSmaller} {
     display: none;
   }
 `;

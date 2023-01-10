@@ -24,7 +24,7 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.aside`
-  @media ${QUERIES.phone} {
+  @media ${QUERIES.phoneAndSmaller} {
     display: none;
   }
 `;
