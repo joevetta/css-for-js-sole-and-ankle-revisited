@@ -9,13 +9,29 @@ import Spacer from "../Spacer";
 import ShoeSidebar from "../ShoeSidebar";
 import ShoeGrid from "../ShoeGrid";
 
+const ShoeBreadcrumbs = () => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+      <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
+    </Breadcrumbs>
+  );
+};
+
 const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
-          <SelectWrapper>
+          <div>
+            <MobileBreadcrumbs>
+              <ShoeBreadcrumbs />
+            </MobileBreadcrumbs>
+            <Title>Running</Title>
+          </div>
+
+          <SortFilterWrapper>
             <Select
               label="Sort"
               value={sortId}
@@ -24,17 +40,15 @@ const ShoeIndex = ({ sortId, setSortId }) => {
               <option value="newest">Newest Releases</option>
               <option value="price">Price</option>
             </Select>
-          </SelectWrapper>
+          </SortFilterWrapper>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
       </MainColumn>
       <LeftColumn>
-        <Breadcrumbs>
-          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
-        </Breadcrumbs>
+        <DesktopBreadcrumbs>
+          <ShoeBreadcrumbs />
+        </DesktopBreadcrumbs>
         <Spacer size={42} />
         <ShoeSidebar />
       </LeftColumn>
@@ -47,20 +61,13 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
-
-  @media ${QUERIES.phoneAndSmaller} {
-    flex-direction: column-reverse;
-    gap: 0px;
-    ${Spacer} {
-      display: none;
-    }
-  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
-  @media ${QUERIES.phoneAndSmaller} {
-    flex-basis: 0px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
   }
 `;
 
@@ -72,6 +79,10 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    align-items: flex-end;
+  }
 `;
 
 const Title = styled.h2`
@@ -79,7 +90,20 @@ const Title = styled.h2`
   font-weight: ${WEIGHTS.medium};
 `;
 
-const SelectWrapper = styled.div`
+const DesktopBreadcrumbs = styled.div`
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
+  }
+`;
+const MobileBreadcrumbs = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: revert;
+  }
+`;
+
+const SortFilterWrapper = styled.div`
   @media ${QUERIES.phoneAndSmaller} {
     display: none;
   }
