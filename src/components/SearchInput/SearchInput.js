@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import VisuallyHidden from '../VisuallyHidden';
-import Icon from '../Icon';
+import VisuallyHidden from "../VisuallyHidden";
+import Icon from "../Icon";
 
 const SearchInput = ({ label, ...delegated }) => {
   return (
@@ -42,19 +42,3 @@ const SearchIcon = styled(Icon)`
 `;
 
 export default SearchInput;
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
