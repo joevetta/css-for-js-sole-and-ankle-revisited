@@ -75,7 +75,6 @@ const NavLink = styled.a`
   text-decoration: none;
   font-size: 1.125rem;
   text-transform: uppercase;
-
   &:first-of-type {
     color: var(--color-secondary);
   }

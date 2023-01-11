@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { WEIGHTS } from '../../constants';
 
 import Icon from '../Icon';
 
@@ -39,7 +39,7 @@ const Wrapper = styled.label`
 `;
 
 const VisibleLabel = styled.span`
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
   margin-right: 16px;
 `;
 
@@ -61,14 +61,13 @@ const NativeSelect = styled.select`
 
 const DisplayedBit = styled.span`
   display: block;
-  background: ${COLORS.gray[100]};
+  background: var(--color-gray-100);
   font-size: 1rem;
   font-weight: ${WEIGHTS.medium};
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   padding: 12px 42px 12px 16px;
   border-radius: 8px;
   pointer-events: none;
-
   ${NativeSelect}:focus ~ & {
     outline: 1px dotted #212121;
     outline: 5px auto -webkit-focus-ring-color;
@@ -86,3 +85,19 @@ const ChevronIcon = styled(Icon)`
 `;
 
 export default Select;
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+

@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS } from '../../constants';
-
 import VisuallyHidden from '../VisuallyHidden';
 import Icon from '../Icon';
 
@@ -23,14 +21,13 @@ const Label = styled.label`
 const Input = styled.input`
   border: none;
   background: transparent;
-  border-bottom: 1px solid ${COLORS.gray[300]};
+  border-bottom: 1px solid var(--color-gray-300);
   padding-left: 24px;
   font-size: 0.875rem;
-  color: ${COLORS.gray[100]};
+  color: var(--color-gray-100);
   outline-offset: 4px;
-
   &::placeholder {
-    color: ${COLORS.gray[500]};
+    color: var(--color-gray-500);
   }
 `;
 
@@ -45,3 +42,19 @@ const SearchIcon = styled(Icon)`
 `;
 
 export default SearchInput;
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
