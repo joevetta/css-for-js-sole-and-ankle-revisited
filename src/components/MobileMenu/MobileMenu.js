@@ -3,91 +3,92 @@ import React from "react";
 import styled from "styled-components/macro";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { COLORS, QUERIES } from "../../constants";
+import { QUERIES, WEIGHTS } from "../../constants";
 
 import UnstyledButton from "../UnstyledButton";
 import Icon from "../Icon";
 import VisuallyHidden from "../VisuallyHidden";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    <Modal>
-      <ModalContent aria-label="Navigation Menu">
-        <CloseButton id="close" strokeWidth="2" onClick={onDismiss}>
-          Dismiss menu
+    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
+      <Content aria-label="Menu">
+        <CloseButton onClick={onDismiss}>
+          <Icon id="close" />
+          <VisuallyHidden>Dismiss menu</VisuallyHidden>
         </CloseButton>
+        <Filler />
         <Nav>
-          <a href="/sale">Sale</a>
-          <a href="/new">New&nbsp;Releases</a>
-          <a href="/men">Men</a>
-          <a href="/women">Women</a>
-          <a href="/kids">Kids</a>
-          <a href="/collections">Collections</a>
+          <NavLink href="/sale">Sale</NavLink>
+          <NavLink href="/new">New&nbsp;Releases</NavLink>
+          <NavLink href="/men">Men</NavLink>
+          <NavLink href="/women">Women</NavLink>
+          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Footer>
           <a href="/terms">Terms and Conditions</a>
           <a href="/privacy">Privacy Policy</a>
           <a href="/contact">Contact Us</a>
         </Footer>
-      </ModalContent>
-    </Modal>
+      </Content>
+    </Overlay>
   );
 };
 
-const Modal = styled(DialogOverlay)`
-  position: absolute;
+const Overlay = styled(DialogOverlay)`
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: hsla(220, 5%, 40%, 0.8);
+  background: var(--color-backdrop);
+  display: flex;
+  justify-content: flex-end;
 `;
 
-const ModalContent = styled(DialogContent)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+const Content = styled(DialogContent)`
+  background: white;
   width: 300px;
+  height: 100%;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  padding: 32px;
 `;
 
-const CloseButton = styled(Icon)`
-  align-self: flex-end;
+const CloseButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 16px;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  gap: 22px;
   flex-direction: column;
-  justify-content: center;
-  flex: 1;
+  gap: 16px;
+`;
 
-  & a {
-    font-size: ${18 / 16}rem;
-    font-weight: 600;
-    color: ${COLORS.gray[900]};
-    text-transform: uppercase;
-    text-decoration: none;
+const NavLink = styled.a`
+  color: var(--color-gray-900);
+  font-weight: ${WEIGHTS.medium};
+  text-decoration: none;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+
+  &:first-of-type {
+    color: var(--color-secondary);
   }
 `;
 
+const Filler = styled.div`
+  flex: 1;
+`;
 const Footer = styled.footer`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-
-  & a {
-    color: ${COLORS.gray[500]};
-    text-decoration: none;
-  }
+  justify-content: flex-end;
 `;
 
 export default MobileMenu;
